@@ -16,5 +16,15 @@
     {"name":"Extensions","order":14,"path":"folders/Extensions.yy",},
     {"name":"Particle Systems","order":15,"path":"folders/Particle Systems.yy",},
   ],
-  "ResourceOrderSettings": [],
+  "ResourceOrderSettings": [
+    {"name":"obj_enemy","order":4,"path":"objects/obj_enemy/obj_enemy.yy",},
+    {"name":"obj_actor","order":3,"path":"objects/obj_actor/obj_actor.yy",},
+    {"name":"spr_gun4","order":3,"path":"sprites/spr_gun4/spr_gun4.yy",},
+    {"name":"spr_enemy","order":4,"path":"sprites/spr_enemy/spr_enemy.yy",},
+    {"name":"spr_gun","order":2,"path":"sprites/spr_gun/spr_gun.yy",},
+    {"name":"obj_wall","order":1,"path":"objects/obj_wall/obj_wall.yy",},
+    {"name":"obj_gun","order":2,"path":"objects/obj_gun/obj_gun.yy",},
+    {"name":"spr_wall","order":1,"path":"sprites/spr_wall/spr_wall.yy",},
+    {"name":"Global","order":1,"path":"scripts/Global/Global.yy",},
+  ],
 }
