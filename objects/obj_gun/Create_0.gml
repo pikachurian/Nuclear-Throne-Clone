@@ -1,6 +1,8 @@
 ownerInstance = noone;
 bulletTarget = BT.enemy;
 
+dir = 0;
+
 function MoveToOwner()
 {
 	if(ownerInstance != noone)
@@ -13,9 +15,20 @@ function MoveToOwner()
 function PointToPosition(_x, _y)
 {
 	image_angle = point_direction(x, y, _x, _y);
-	direction = image_angle;
+	dir = image_angle;
 	if(image_angle > 90 && image_angle < 270)
 		image_yscale = -1;
 	else
 		image_yscale = 1;
+}
+
+function Shoot(_bulletTarget, _speed, _direction, _damage)
+{
+	var _bullet = instance_create_depth(x, y, depth + 5, obj_bullet);
+	_bullet.SetDirection(_direction);
+	_bullet.spd = _speed;
+	_bullet.damage = _damage;
+	_bullet.bulletTarget = _bulletTarget;
+	
+	return _bullet;
 }

@@ -51,6 +51,14 @@ switch(state)
 		}
 		
 		gunInstance.PointToPosition(obj_player.x, obj_player.y);
+		
+		//Shooting.
+		if(shootTick >= shootTime)
+		{
+			shootTick = 0;
+			
+			gunInstance.Shoot(BT.player, bulletSpeed, gunInstance.dir, bulletDamage);
+		}else shootTick ++;
 		break;
 }
 

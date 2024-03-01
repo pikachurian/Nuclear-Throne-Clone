@@ -29,7 +29,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_bullet_player",
+    "path": "sprites/spr_bullet_player/spr_bullet_player.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

@@ -4,6 +4,7 @@ switch(state)
 		hspd = GetInput(INPUT.horizontalAxis) * spd;
 		vspd = GetInput(INPUT.verticalAxis) * spd;
 		MoveAndSlide();
+		CheckBulletHit();
 		gunInstance.PointToPosition(mouse_x, mouse_y);
 		break;
 }

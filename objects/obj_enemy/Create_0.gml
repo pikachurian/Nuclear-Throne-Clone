@@ -33,6 +33,12 @@ stuckTime = 1 * game_get_speed(gamespeed_fps);
 
 detectPlayerRange = 256;
 
+shootTime = 1 * game_get_speed(gamespeed_fps);
+shootTick = 0;
+
+bulletDamage = 10;
+bulletSpeed = 5;
+
 //Create gun.
 gunInstance = instance_create_depth(x, y, depth - 10, obj_gun);
 gunInstance.ownerInstance = id;
@@ -74,6 +80,10 @@ function ChangeState(_state)
 	{
 		case ES.wait:
 			//
+			break;
+			
+		case ES.chasePlayer:
+			shootTick = 0;
 			break;
 	}
 	

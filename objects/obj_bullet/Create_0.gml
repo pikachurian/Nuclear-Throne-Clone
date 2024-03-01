@@ -19,6 +19,6 @@ function UpdateMovement()
 
 function SetDirection(_dir)
 {
-	direction = _dir;
-	image_angle = direction;
+	dir = _dir;
+	image_angle = dir;
 }

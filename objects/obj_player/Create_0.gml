@@ -2,6 +2,9 @@ event_inherited();
 
 isPlayer = true;
 
+hpMax = 100;
+hp = hpMax;
+
 //Player State.
 enum PS 
 {
