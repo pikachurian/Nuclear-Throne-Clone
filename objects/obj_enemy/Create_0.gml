@@ -29,15 +29,18 @@ lastX = x;
 lastY = y;
 
 stuckTick = 0;
-stuckTime = 1 * game_get_speed(gamespeed_fps);
+stuckTime = game_get_speed(gamespeed_fps) * 1;
 
 detectPlayerRange = 256;
 
-shootTime = 1 * game_get_speed(gamespeed_fps);
+//The enemy will stop if its distance to the player is under or equal to this range.
+minPlayerRange = 64;
+
+shootTime = game_get_speed(gamespeed_fps) * 3; //1;
 shootTick = 0;
 
 bulletDamage = 10;
-bulletSpeed = 5;
+bulletSpeed = 2;
 
 //Create gun.
 gunInstance = instance_create_depth(x, y, depth - 10, obj_gun);
@@ -109,4 +112,17 @@ function DetectPlayer()
 	{
 		ChangeState(ES.chasePlayer);
 	}
+}
+
+function UpdateShootAndAim()
+{
+	gunInstance.PointToPosition(obj_player.x, obj_player.y);
+		
+	//Shooting.
+	if(shootTick >= shootTime)
+	{
+		shootTick = 0;
+			
+		gunInstance.Shoot(BT.player, bulletSpeed, gunInstance.dir, bulletDamage);
+	}else shootTick ++;
 }

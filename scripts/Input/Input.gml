@@ -11,7 +11,8 @@ enum INPUT
 	up,
 	down,
 	horizontalAxis,
-	verticalAxis
+	verticalAxis,
+	shoot
 }
 
 function GetInput(_inputEnum)
@@ -41,6 +42,10 @@ function GetInput(_inputEnum)
 			
 		case INPUT.verticalAxis:
 			_input = GetInput(INPUT.down) - GetInput(INPUT.up);
+			break;
+			
+		case INPUT.shoot:
+			_input = mouse_check_button_pressed(mb_left);
 			break;
 	}
 	

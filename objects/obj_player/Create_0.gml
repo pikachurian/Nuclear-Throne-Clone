@@ -5,6 +5,9 @@ isPlayer = true;
 hpMax = 100;
 hp = hpMax;
 
+bulletDamage = 10;
+bulletSpeed = 5;
+
 //Player State.
 enum PS 
 {

@@ -35,17 +35,37 @@ function MoveAndSlide()
 function TakeDamage(_amount)
 {
 	hp -= _amount;
+	
+	if(hp <= 0)
+		Die();
+}
+
+function Die()
+{
+	instance_destroy();
 }
 
 function CheckBulletHit()
 {
-	var _bulletHit = instance_place(x, y, obj_bullet);
+	var _bullets = ds_list_create();
+	var _bulletsCount = instance_place_list(x, y, obj_bullet, _bullets, false);
 	
-	if(_bulletHit != noone)
+	
+	if(_bulletsCount > 0)
 	{
-		//Take damage.
-		TakeDamage(_bulletHit.damage);
+		for(var _i = 0; _i < _bulletsCount; _i ++)
+		{
+			//Check bullet target against isPlayer.
+			if(isPlayer) && (_bullets[|_i].bulletTarget == BT.player) ||
+			(!isPlayer) && (_bullets[|_i].bulletTarget == BT.enemy)
+			{
+				//Take damage.
+				TakeDamage(_bullets[|_i].damage);
 		
-		instance_destroy(_bulletHit);
+				instance_destroy(_bullets[|_i]);
+				
+				break;
+			}
+		}
 	}
 }

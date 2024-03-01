@@ -1,3 +1,5 @@
+CheckBulletHit();
+
 switch(state)
 {
 	case ES.setRoamGoal:
@@ -42,7 +44,8 @@ switch(state)
 		break;
 		
 	case ES.chasePlayer:
-		MoveTowardsPoint(obj_player.x, obj_player.y);
+		if(point_distance(x, y, obj_player.x, obj_player.y) > minPlayerRange)
+			MoveTowardsPoint(obj_player.x, obj_player.y);
 		
 		//Stop chasing if out of range.
 		if(point_distance(x, y, obj_player.x, obj_player.y) > detectPlayerRange)
@@ -50,15 +53,7 @@ switch(state)
 			Wait(ES.setRoamGoal, waitTimeMax * 0.8);
 		}
 		
-		gunInstance.PointToPosition(obj_player.x, obj_player.y);
-		
-		//Shooting.
-		if(shootTick >= shootTime)
-		{
-			shootTick = 0;
-			
-			gunInstance.Shoot(BT.player, bulletSpeed, gunInstance.dir, bulletDamage);
-		}else shootTick ++;
+		UpdateShootAndAim();
 		break;
 }
 
