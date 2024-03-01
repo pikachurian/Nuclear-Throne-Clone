@@ -10,5 +10,7 @@ switch(state)
 		//Shooting.
 		if(GetInput(INPUT.shoot))
 			gunInstance.Shoot(BT.enemy, bulletSpeed, gunInstance.dir, bulletDamage);
+			
+		UpdateSprite();
 		break;
 }
