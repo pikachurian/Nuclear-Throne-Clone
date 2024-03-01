@@ -27,6 +27,9 @@ spawnMoverChance = 0.2;
 maxMovers = 7;
 deleteMoverChance = 0.2;
 
+playerSpawnX = 0;
+playerSpawnY = 0;
+
 grid = [];
 
 movers = ds_list_create();
@@ -86,9 +89,15 @@ function SpawnMover(_x, _y)
 function GenerateLevel()
 {
 	SetupGrid();
+	
+	playerSpawnX = round(gridWidth / 2);
+	playerSpawnY = round(gridHeight / 2);
 
 	//ds_list_add(movers, new Mover(round(gridWidth / 2), round(gridHeight / 2), RandomDirection()));
-	SpawnMover(round(gridWidth / 2), round(gridHeight / 2));
+	SpawnMover(playerSpawnX, playerSpawnY);
+	
+	playerSpawnX *= tileSize;
+	playerSpawnY *= tileSize;
 
 	var _tick = 0;
 
@@ -170,4 +179,7 @@ function GenerateLevel()
 					_wall.sprite_index = spr_wall_tile_top;
 			}
 		}
+		
+	//Spawn Player.
+	instance_create_depth(playerSpawnX, playerSpawnY, depth - 10, obj_player);
 }
