@@ -1,5 +1,10 @@
+isPlayer = false;
+
 hspd = 0;
 vspd = 0;
+
+hpMax = 30;
+hp = 30;
 
 //Move using hspd and vspd.
 function MoveAndSlide()
@@ -25,4 +30,22 @@ function MoveAndSlide()
 	}
 	
 	y += vspd;
+}
+
+function TakeDamage(_amount)
+{
+	hp -= _amount;
+}
+
+function CheckBulletHit()
+{
+	var _bulletHit = instance_place(x, y, obj_bullet);
+	
+	if(_bulletHit != noone)
+	{
+		//Take damage.
+		TakeDamage(_bulletHit.damage);
+		
+		instance_destroy(_bulletHit);
+	}
 }

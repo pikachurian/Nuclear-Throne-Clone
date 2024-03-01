@@ -1,5 +1,7 @@
 event_inherited();
 
+isPlayer = true;
+
 //Player State.
 enum PS 
 {

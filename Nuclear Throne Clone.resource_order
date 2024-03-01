@@ -22,9 +22,12 @@
     {"name":"spr_gun4","order":3,"path":"sprites/spr_gun4/spr_gun4.yy",},
     {"name":"spr_enemy","order":4,"path":"sprites/spr_enemy/spr_enemy.yy",},
     {"name":"spr_gun","order":2,"path":"sprites/spr_gun/spr_gun.yy",},
+    {"name":"spr_bullet_enemy","order":6,"path":"sprites/spr_bullet_enemy/spr_bullet_enemy.yy",},
     {"name":"obj_wall","order":1,"path":"objects/obj_wall/obj_wall.yy",},
     {"name":"obj_gun","order":2,"path":"objects/obj_gun/obj_gun.yy",},
     {"name":"spr_wall","order":1,"path":"sprites/spr_wall/spr_wall.yy",},
+    {"name":"spr_bullet_player","order":5,"path":"sprites/spr_bullet_player/spr_bullet_player.yy",},
+    {"name":"obj_bullet","order":5,"path":"objects/obj_bullet/obj_bullet.yy",},
     {"name":"Global","order":1,"path":"scripts/Global/Global.yy",},
   ],
 }

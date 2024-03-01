@@ -1,4 +1,5 @@
 ownerInstance = noone;
+bulletTarget = BT.enemy;
 
 function MoveToOwner()
 {
