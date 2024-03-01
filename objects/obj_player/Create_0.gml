@@ -6,7 +6,7 @@ hpMax = 100;
 hp = hpMax;
 
 bulletDamage = 10;
-bulletSpeed = 5;
+bulletSpeed = 4;//5;
 
 walkSprite = spr_player_walk;
 idleSprite = spr_player_idle;

@@ -30,5 +30,9 @@ function Shoot(_bulletTarget, _speed, _direction, _damage)
 	_bullet.damage = _damage;
 	_bullet.bulletTarget = _bulletTarget;
 	
+	_bullet.sprite_index = spr_player_bullet;
+	if(_bulletTarget == BT.player)
+		_bullet.sprite_index = spr_enemy_bullet;
+	
 	return _bullet;
 }
