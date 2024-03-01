@@ -1,4 +1,5 @@
 CheckBulletHit();
+UpdateSprite();
 
 switch(state)
 {

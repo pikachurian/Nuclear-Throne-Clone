@@ -6,7 +6,8 @@ enum ES
 	setRoamGoal,
 	roam,
 	wait,
-	chasePlayer
+	chasePlayer,
+	dead
 }
 
 state = ES.setRoamGoal;
@@ -41,6 +42,11 @@ shootTick = 0;
 
 bulletDamage = 10;
 bulletSpeed = 2;
+
+walkSprite = spr_enemy_walk;
+idleSprite = spr_enemy_idle;
+hurtSprite = spr_enemy_hurt;
+deadSprite = spr_enemy_dead;
 
 //Create gun.
 gunInstance = instance_create_depth(x, y, depth - 10, obj_gun);
@@ -125,4 +131,35 @@ function UpdateShootAndAim()
 			
 		gunInstance.Shoot(BT.player, bulletSpeed, gunInstance.dir, bulletDamage);
 	}else shootTick ++;
+}
+
+function UpdateSprite()
+{
+	if(sprite_index != hurtSprite) &&
+	(sprite_index != deadSprite)
+	{
+		//Face player.
+		image_xscale = 1;
+		if(obj_player.x < x)
+			image_xscale = -1;
+		
+		sprite_index = idleSprite;
+		if(hspd != 0) || (vspd != 0)
+			sprite_index = walkSprite;
+	}
+}
+
+function Die()
+{
+	sprite_index = deadSprite;
+	ChangeState(ES.dead);
+}
+
+function TakeDamage(_amount)
+{
+	hp -= _amount;
+	sprite_index = hurtSprite;
+	
+	if(hp <= 0)
+		Die();
 }
