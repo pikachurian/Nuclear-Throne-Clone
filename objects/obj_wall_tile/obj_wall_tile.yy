@@ -27,7 +27,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [],
-  "solid": false,
+  "solid": true,
   "spriteId": {
     "name": "spr_wall_tile",
     "path": "sprites/spr_wall_tile/spr_wall_tile.yy",

@@ -6,5 +6,5 @@ draw_set_color(c_white);
 //draw_line(x, y, goalX, goalY);
 
 //Draw detect player range.
-draw_set_color(c_white);
-draw_circle(x, y, detectPlayerRange, true);
+//draw_set_color(c_white);
+//draw_circle(x, y, detectPlayerRange, true);

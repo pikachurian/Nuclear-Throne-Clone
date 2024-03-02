@@ -3,7 +3,8 @@ enum TILE
 {
 	floor,
 	wall,
-	empty
+	empty,
+	enemy
 }
 
 //Mover Direction.
@@ -26,6 +27,8 @@ turnChance = 0.4;
 spawnMoverChance = 0.2;
 maxMovers = 7;
 deleteMoverChance = 0.2;
+spawnEnemyChance = 0.1;//0.4;
+maxEnemies = 12;
 
 playerSpawnX = 0;
 playerSpawnY = 0;
@@ -81,6 +84,17 @@ function FloorCount()
 	return _count;
 }
 
+function EnemyCount()
+{
+	var _count = 0;
+	for(var _i = 0; _i < gridWidth; _i ++)
+		for(var _j = 0; _j < gridHeight; _j ++)
+			if(grid[_i][_j] == TILE.enemy)
+				_count += 1;
+				
+	return _count;
+}
+
 function SpawnMover(_x, _y)
 {
 	ds_list_add(movers, new Mover(_x, _y, RandomDirection()));
@@ -108,8 +122,13 @@ function GenerateLevel()
 		{
 			var _mover = movers[|_i];
 		
-			//Place tile.
+			//Place tile or enemy.
 			grid[_mover.x][_mover.y] = TILE.floor;
+			if(EnemyCount() < maxEnemies) && (_tick > 100)
+			{
+				if(random(1) <= spawnEnemyChance)
+					grid[_mover.x][_mover.y] = TILE.enemy;
+			}
 		
 			if(random(1) <= turnChance)
 				_mover.dirEnum = RandomDirection();
@@ -140,7 +159,8 @@ function GenerateLevel()
 	for(var _i = 0; _i < gridWidth; _i ++)
 		for(var _j = 0; _j < gridHeight; _j ++)
 		{
-			if(grid[_i][_j] == TILE.floor)
+			if(grid[_i][_j] == TILE.floor) ||
+			(grid[_i][_j] == TILE.enemy)
 			{
 				var _x = _i * tileSize;
 				var _y = _j * tileSize;
@@ -152,7 +172,8 @@ function GenerateLevel()
 	for(var _i = 0; _i < gridWidth; _i ++)
 		for(var _j = 0; _j < gridHeight; _j ++)
 		{
-			if(grid[_i][_j] == TILE.floor)
+			if(grid[_i][_j] == TILE.floor) ||
+			(grid[_i][_j] == TILE.enemy)
 			{
 				//Check up.
 				if(grid[_i][_j - 1] == TILE.empty){grid[_i][_j - 1] = TILE.wall};
@@ -182,4 +203,14 @@ function GenerateLevel()
 		
 	//Spawn Player.
 	instance_create_depth(playerSpawnX, playerSpawnY, depth - 10, obj_player);
+	
+	//Spawn enemies.
+	for(var _i = 0; _i < gridWidth; _i ++)
+		for(var _j = 0; _j < gridHeight; _j ++)
+		{
+			if(grid[_i][_j] == TILE.enemy)
+			{
+				instance_create_depth(_i * tileSize, _j * tileSize, depth, obj_enemy);
+			}
+		}
 }
