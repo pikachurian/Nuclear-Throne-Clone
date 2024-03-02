@@ -29,6 +29,7 @@ maxMovers = 7;
 deleteMoverChance = 0.2;
 spawnEnemyChance = 0.1;//0.4;
 maxEnemies = 12;
+enemyCount = 12;
 
 playerSpawnX = 0;
 playerSpawnY = 0;
@@ -82,6 +83,24 @@ function FloorCount()
 				_count += 1;
 				
 	return _count;
+}
+
+function GetFloorPositionsList()
+{
+	var _floorPositions = ds_list_create();
+	for(var _i = 0; _i < gridWidth; _i ++)
+		for(var _j = 0; _j < gridHeight; _j ++)
+			if(grid[_i][_j] == TILE.floor)
+			{
+				var _position = 
+				{
+					x : _i,
+					y : _j
+				}
+				ds_list_add(_floorPositions, _position);
+			}
+				
+	return _floorPositions;
 }
 
 function EnemyCount()
@@ -205,12 +224,15 @@ function GenerateLevel()
 	instance_create_depth(playerSpawnX, playerSpawnY, depth - 10, obj_player);
 	
 	//Spawn enemies.
-	for(var _i = 0; _i < gridWidth; _i ++)
-		for(var _j = 0; _j < gridHeight; _j ++)
-		{
-			if(grid[_i][_j] == TILE.enemy)
-			{
-				instance_create_depth(_i * tileSize, _j * tileSize, depth, obj_enemy);
-			}
-		}
+	var _floors = GetFloorPositionsList();
+	ds_list_shuffle(_floors);
+	//show_debug_message(_floors[|0]);
+	var _loops = min(enemyCount, FloorCount());
+	for(var _i = 0; _i < _loops; _i ++)
+	{
+		var _spawnX = _floors[|_i].x * tileSize;
+		var _spawnY = _floors[|_i].y * tileSize;
+		instance_create_depth(_spawnX, _spawnY, depth - 10, obj_enemy);
+	}
+	ds_list_destroy(_floors);
 }

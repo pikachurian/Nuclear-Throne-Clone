@@ -31,3 +31,13 @@ function DrawBar(_percent, _x, _y, _width, _height, _borderSize, _color, _border
 		);
 	}
 }
+
+function ArrayShuffle(_array)
+{
+	//
+}
+
+function ArrayToList(_array)
+{
+	//
+}
