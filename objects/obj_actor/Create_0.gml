@@ -6,6 +6,10 @@ vspd = 0;
 hpMax = 30;
 hp = 30;
 
+addedForceX = 0;
+addedForceY = 0;
+fric = 0.9;
+
 //Move using hspd and vspd.
 function MoveAndSlide()
 {
@@ -16,6 +20,7 @@ function MoveAndSlide()
 			x += sign(hspd);
 			
 		hspd = 0;
+		addedForceX = 0;
 	}
 	
 	x += hspd;
@@ -27,9 +32,19 @@ function MoveAndSlide()
 			y += sign(vspd);
 			
 		vspd = 0;
+		addedForceY = 0;
 	}
 	
 	y += vspd;
+}
+
+function UpdateForce()
+{
+	hspd += addedForceX;
+	vspd += addedForceY;
+	MoveAndSlide();
+	addedForceX *= fric;
+	addedForceY *= fric;
 }
 
 function TakeDamage(_amount)
@@ -71,4 +86,10 @@ function CheckBulletHit()
 			}
 		}
 	}
+}
+
+function AddForce(_x, _y)
+{
+	addedForceX = _x;
+	addedForceY = _y;
 }

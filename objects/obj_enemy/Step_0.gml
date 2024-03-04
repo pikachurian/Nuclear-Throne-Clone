@@ -1,6 +1,7 @@
 event_inherited();
 CheckBulletHit();
 UpdateSprite();
+UpdateForce();
 
 switch(state)
 {
