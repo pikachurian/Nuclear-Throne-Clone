@@ -5,6 +5,8 @@ isPlayer = true;
 hpMax = 100;
 hp = hpMax;
 
+fric = 0.5;
+
 bulletDamage = 10;
 bulletSpeed = 4;//5;
 

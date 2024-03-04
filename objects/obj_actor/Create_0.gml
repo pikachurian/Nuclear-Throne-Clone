@@ -20,7 +20,6 @@ function MoveAndSlide()
 			x += sign(hspd);
 			
 		hspd = 0;
-		addedForceX = 0;
 	}
 	
 	x += hspd;
@@ -32,7 +31,6 @@ function MoveAndSlide()
 			y += sign(vspd);
 			
 		vspd = 0;
-		addedForceY = 0;
 	}
 	
 	y += vspd;
@@ -40,9 +38,22 @@ function MoveAndSlide()
 
 function UpdateForce()
 {
-	hspd += addedForceX;
-	vspd += addedForceY;
-	MoveAndSlide();
+	//X collisions.
+	if(place_meeting(x + addedForceX, y, obj_wall))
+	{
+		addedForceX *= -1;
+	}
+	
+	x += addedForceX;
+	
+	//Y collisions.
+	if(place_meeting(x, y + addedForceY, obj_wall))
+	{
+		addedForceY *= -1;
+	}
+	
+	y += addedForceY;
+	
 	addedForceX *= fric;
 	addedForceY *= fric;
 }
@@ -78,6 +89,13 @@ function CheckBulletHit()
 				{
 					//Take damage.
 					TakeDamage(_bullets[|_i].damage);
+					
+					//Add force to this actor.
+					var _length = _bullets[|_i].force;
+					var _direction = _bullets[|_i].image_angle;
+					var _forceX = lengthdir_x(_length, _direction);
+					var _forceY = lengthdir_y(_length, _direction);
+					AddForce(_forceX, _forceY);
 		
 					_bullets[|_i].Destroy();
 				

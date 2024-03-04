@@ -8,6 +8,7 @@ switch(state)
 		MoveAndSlide();
 		CheckBulletHit();
 		gunInstance.PointToPosition(mouse_x, mouse_y);
+		UpdateForce();
 		
 		//Shooting.
 		if(GetInput(INPUT.shoot))

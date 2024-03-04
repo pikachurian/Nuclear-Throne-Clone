@@ -13,7 +13,7 @@ explodeSprite = spr_enemy_bullet_explode;
 dir = 0;
 spd = 4;
 damage = 10;
-force = 10; //Used to knock back target.
+force = 10;//2; //Used to knock back target.
 
 canHurt = true;
 

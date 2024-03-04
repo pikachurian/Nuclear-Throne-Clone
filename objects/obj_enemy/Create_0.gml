@@ -194,15 +194,15 @@ function CheckBulletHit()
 				{
 					//Take damage.
 					TakeDamage(_bullets[|_i].damage);
-		
-					_bullets[|_i].Destroy();
 					
 					//Add force to this enemy.
 					var _length = _bullets[|_i].force;
-					var _direction = point_direction(_bullets[|_i].x, _bullets[|_i].y, x, y);
+					var _direction = _bullets[|_i].image_angle;
 					var _forceX = lengthdir_x(_length, _direction);
 					var _forceY = lengthdir_y(_length, _direction);
 					AddForce(_forceX, _forceY);
+				
+					_bullets[|_i].Destroy();
 				
 					break;
 				}
