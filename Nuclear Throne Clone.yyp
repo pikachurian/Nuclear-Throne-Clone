@@ -82,6 +82,7 @@
     {"id":{"name":"spr_enemy_collision","path":"sprites/spr_enemy_collision/spr_enemy_collision.yy",},},
     {"id":{"name":"obj_wall_tile","path":"objects/obj_wall_tile/obj_wall_tile.yy",},},
     {"id":{"name":"Input","path":"scripts/Input/Input.yy",},},
+    {"id":{"name":"sng_surfin_bird","path":"sounds/sng_surfin_bird/sng_surfin_bird.yy",},},
     {"id":{"name":"spr_player_hurt","path":"sprites/spr_player_hurt/spr_player_hurt.yy",},},
     {"id":{"name":"spr_player_dead","path":"sprites/spr_player_dead/spr_player_dead.yy",},},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},

@@ -59,12 +59,15 @@ function CheckBulletHit()
 			if(isPlayer) && (_bullets[|_i].bulletTarget == BT.player) ||
 			(!isPlayer) && (_bullets[|_i].bulletTarget == BT.enemy)
 			{
-				//Take damage.
-				TakeDamage(_bullets[|_i].damage);
+				if(_bullets[|_i].canHurt)
+				{
+					//Take damage.
+					TakeDamage(_bullets[|_i].damage);
 		
-				_bullets[|_i].Destroy();
+					_bullets[|_i].Destroy();
 				
-				break;
+					break;
+				}
 			}
 		}
 	}

@@ -1,3 +1,5 @@
+audio_stop_all();
+
 part1Sprite = spr_game_over_part_1;
 part2Sprite = spr_game_over_part_2;
 

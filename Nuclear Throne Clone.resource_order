@@ -57,6 +57,7 @@
     {"name":"spr_wall_16","order":7,"path":"sprites/spr_wall_16/spr_wall_16.yy",},
     {"name":"spr_enemy_collision","order":4,"path":"sprites/spr_enemy_collision/spr_enemy_collision.yy",},
     {"name":"obj_wall_tile","order":1,"path":"objects/obj_wall_tile/obj_wall_tile.yy",},
+    {"name":"sng_surfin_bird","order":4,"path":"sounds/sng_surfin_bird/sng_surfin_bird.yy",},
     {"name":"spr_player_hurt","order":2,"path":"sprites/spr_player_hurt/spr_player_hurt.yy",},
     {"name":"spr_player_dead","order":3,"path":"sprites/spr_player_dead/spr_player_dead.yy",},
     {"name":"Room2","order":1,"path":"rooms/Room2/Room2.yy",},
