@@ -14,6 +14,7 @@ switch(state)
 		{
 			gunInstance.Shoot(BT.enemy, bulletSpeed, gunInstance.dir, bulletDamage);
 			obj_cam.Shake(10);
+			audio_play_sound(sfx_shoot, 12, false);
 		}
 			
 		UpdateSprite();

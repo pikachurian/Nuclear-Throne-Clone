@@ -40,7 +40,7 @@ minPlayerRange = 64;
 shootTime = game_get_speed(gamespeed_fps) * 3; //1;
 shootTick = 0;
 
-bulletDamage = 10;
+bulletDamage = 5;//10;
 bulletSpeed = 2;
 
 walkSprite = spr_enemy_walk;
@@ -130,6 +130,7 @@ function UpdateShootAndAim()
 		shootTick = 0;
 			
 		gunInstance.Shoot(BT.player, bulletSpeed, gunInstance.dir, bulletDamage);
+		audio_play_sound(sfx_enemy_shoot, 8, false);
 	}else shootTick ++;
 }
 
@@ -159,6 +160,8 @@ function TakeDamage(_amount)
 {
 	if(state != ES.dead)
 	{
+		audio_play_sound(sfx_enemy_hurt, 5, false);
+		
 		hp -= _amount;
 		sprite_index = hurtSprite;
 	

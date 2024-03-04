@@ -47,6 +47,8 @@ function TakeDamage(_amount)
 {
 	if(state != PS.dead)
 	{
+		audio_play_sound(sfx_player_hurt, 8, false);
+		
 		sprite_index = hurtSprite;
 	
 		hp -= _amount;
