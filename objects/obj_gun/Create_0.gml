@@ -3,6 +3,8 @@ bulletTarget = BT.enemy;
 
 dir = 0;
 
+spread = 45
+
 function MoveToOwner()
 {
 	if(ownerInstance != noone)
@@ -27,6 +29,9 @@ function Shoot(_bulletTarget, _speed, _direction, _damage)
 	var _offset = 24;
 	var _spawnX = x + lengthdir_x(_offset, image_angle);
 	var _spawnY = y + lengthdir_y(_offset, image_angle);
+	
+	//Apply randomness to the shoot angle.
+	_direction += random_range(-spread / 2, spread / 2);
 	
 	var _bullet = instance_create_depth(_spawnX, _spawnY, depth + 5, obj_bullet);
 	_bullet.SetDirection(_direction);
