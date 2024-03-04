@@ -4,6 +4,8 @@ function DrawMiniMap()
 	
 	var _x = camera_get_view_x(view_camera[0]) + 4;
 	var _y = camera_get_view_y(view_camera[0]) + 4;
+	
+	var _tileDrawSize = 2;
 
 	for(var _i = 0; _i < obj_level_generator.gridWidth; _i ++)
 	{

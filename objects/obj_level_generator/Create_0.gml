@@ -21,15 +21,15 @@ gridWidth = floor(room_width / tileSize);
 gridHeight = floor(room_height / tileSize);
 
 //The percentage of the grid to fill with floors.
-percentFill = 0.2;
+percentFill = 0.2;//0.2;
 
-turnChance = 0.4;
-spawnMoverChance = 0.2;
-maxMovers = 7;
-deleteMoverChance = 0.2;
-spawnEnemyChance = 0.1;//0.4;
-maxEnemies = 12;
-enemyCount = 12;
+turnChance = 0.45;//0.4;
+spawnMoverChance = 0.2;//0.2;
+maxMovers = 8;//7;
+deleteMoverChance = 0.5;//0.2;
+spawnEnemyChance = 0.1;//0.1;//EARLY0.4;
+maxEnemies = 12;//12;
+enemyCount = 12;//12;
 
 playerSpawnX = 0;
 playerSpawnY = 0;
@@ -56,8 +56,8 @@ function Mover(_x, _y, _directionEnum) constructor
 		}
 		
 		//Clamp to grid and leave a 1 tile border for walls.
-		x = clamp(x, 1, obj_level_generator.gridWidth - 3);
-		y = clamp(y, 1, obj_level_generator.gridHeight - 3);
+		x = clamp(x, 2, obj_level_generator.gridWidth - 3);
+		y = clamp(y, 2, obj_level_generator.gridHeight - 3);
 	}
 }
 
@@ -119,6 +119,55 @@ function SpawnMover(_x, _y)
 	ds_list_add(movers, new Mover(_x, _y, RandomDirection()));
 }
 
+function RemoveSingleWalls()
+{
+	for(var _i = 0; _i < gridWidth; _i ++)
+		for(var _j = 0; _j < gridHeight; _j ++)
+		{
+			var _tile = grid[_i][_j];
+			if(_tile == TILE.wall)
+			{
+				var _isSingleWall = true;
+				//Check up.
+				if(grid[_i][_j - 1] == TILE.wall) || (grid[_i][_j - 1] == TILE.empty)
+					_isSingleWall = false;
+			
+				//Check down.
+				if(grid[_i][_j + 1] == TILE.wall) || (grid[_i][_j + 1] == TILE.empty)
+					_isSingleWall = false;
+			
+				//Check left.
+				if(grid[_i - 1][_j] == TILE.wall) || (grid[_i - 1][_j] == TILE.empty)
+					_isSingleWall = false;
+			
+				//Check right.
+				if(grid[_i + 1][_j] == TILE.wall) || (grid[_i + 1][_j] == TILE.empty)
+					_isSingleWall = false;
+					
+					
+				/*//Check up right.
+				if(grid[_i + 1][_j - 1] == TILE.wall) || (grid[_i + 1][_j - 1] == TILE.empty)
+					_isSingleWall = false;
+			
+				//Check down right.
+				if(grid[_i + 1][_j + 1] == TILE.wall) || (grid[_i + 1][_j + 1] == TILE.empty)
+					_isSingleWall = false;
+			
+				//Check down left.
+				if(grid[_i - 1][_j + 1] == TILE.wall) || (grid[_i - 1][_j + 1] == TILE.empty)
+					_isSingleWall = false;
+			
+				//Check up left.
+				if(grid[_i - 1][_j - 1] == TILE.wall) || (grid[_i - 1][_j - 1] == TILE.empty)
+					_isSingleWall = false;
+					
+				*/
+				if(_isSingleWall == true)
+					grid[_i][_j] = TILE.floor;
+			}
+		}
+}
+
 function GenerateLevel()
 {
 	SetupGrid();
@@ -173,7 +222,30 @@ function GenerateLevel()
 	
 		_tick += 1;
 	}until (_tick > 10000);
-
+		
+	//Place walls.
+	for(var _i = 0; _i < gridWidth; _i ++)
+		for(var _j = 0; _j < gridHeight; _j ++)
+		{
+			if(grid[_i][_j] == TILE.floor) ||
+			(grid[_i][_j] == TILE.enemy)
+			{
+				//Check up.
+				if(grid[_i][_j - 1] == TILE.empty){grid[_i][_j - 1] = TILE.wall;}
+			
+				//Check down.
+				if(grid[_i][_j + 1] == TILE.empty){grid[_i][_j + 1] = TILE.wall;}
+			
+				//Check left.
+				if(grid[_i - 1][_j] == TILE.empty){grid[_i - 1][_j] = TILE.wall;}
+			
+				//Check right.
+				if(grid[_i + 1][_j] == TILE.empty){grid[_i + 1][_j] = TILE.wall;}
+			}
+		}
+		
+	RemoveSingleWalls();
+	
 	//Spawn. floors.
 	for(var _i = 0; _i < gridWidth; _i ++)
 		for(var _j = 0; _j < gridHeight; _j ++)
@@ -184,27 +256,6 @@ function GenerateLevel()
 				var _x = _i * tileSize;
 				var _y = _j * tileSize;
 				instance_create_layer(_x, _y, "Floor", obj_floor_tile);
-			}
-		}
-		
-	//Place walls.
-	for(var _i = 0; _i < gridWidth; _i ++)
-		for(var _j = 0; _j < gridHeight; _j ++)
-		{
-			if(grid[_i][_j] == TILE.floor) ||
-			(grid[_i][_j] == TILE.enemy)
-			{
-				//Check up.
-				if(grid[_i][_j - 1] == TILE.empty){grid[_i][_j - 1] = TILE.wall};
-			
-				//Check down.
-				if(grid[_i][_j + 1] == TILE.empty){grid[_i][_j + 1] = TILE.wall};
-			
-				//Check left.
-				if(grid[_i - 1][_j] == TILE.empty){grid[_i - 1][_j] = TILE.wall};
-			
-				//Check right.
-				if(grid[_i + 1][_j] == TILE.empty){grid[_i + 1][_j] = TILE.wall};
 			}
 		}
 		
