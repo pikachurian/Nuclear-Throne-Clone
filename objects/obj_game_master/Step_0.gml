@@ -10,6 +10,13 @@ switch(state)
 {
 	case GS.setup:
 		obj_level_generator.GenerateLevel();
+		if(instance_exists(obj_html_scaler))
+		{
+			with(obj_html_scaler)
+			{
+				ScaleCanvas(baseWidth, baseHeight, width, height, true);
+			}
+		}
 		ChangeState(GS.main);
 		break;
 }

@@ -1,5 +1,7 @@
 function ScaleCanvas(_baseWidth, _baseHeight, _currentWidth, _currentHeight, _center)
 {
+	if(os_browser == browser_not_a_browser)
+		return;
 	var _aspect = (_baseWidth / _baseHeight);
 	
 	if((_currentWidth / _aspect) > _currentHeight)
@@ -24,4 +26,6 @@ baseWidth = 640;
 baseHeight = 360;
 width = baseWidth;
 height = baseHeight;
+
+ScaleCanvas(baseWidth, baseHeight, width, height, true);
 

@@ -21,7 +21,7 @@
   "option_html5_localrunalert": true,
   "option_html5_outputdebugtoconsole": true,
   "option_html5_outputname": "index.html",
-  "option_html5_scale": 0,
+  "option_html5_scale": 1,
   "option_html5_splash_png": "${base_options_dir}/html5/splash.png",
   "option_html5_texture_page": "2048x2048",
   "option_html5_use_facebook": false,
