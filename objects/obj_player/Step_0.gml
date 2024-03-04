@@ -11,7 +11,10 @@ switch(state)
 		
 		//Shooting.
 		if(GetInput(INPUT.shoot))
+		{
 			gunInstance.Shoot(BT.enemy, bulletSpeed, gunInstance.dir, bulletDamage);
+			obj_cam.Shake(10);
+		}
 			
 		UpdateSprite();
 		break;
