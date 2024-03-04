@@ -40,8 +40,11 @@ minPlayerRange = 64;
 shootTime = game_get_speed(gamespeed_fps) * 3; //1;
 shootTick = 0;
 
-bulletDamage = 5;//10;
+bulletDamage = 10;
 bulletSpeed = 2;
+
+hp = 20;
+hpMax = 20;
 
 walkSprite = spr_enemy_walk;
 idleSprite = spr_enemy_idle;
