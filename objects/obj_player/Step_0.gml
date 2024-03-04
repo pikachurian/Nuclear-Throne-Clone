@@ -1,3 +1,5 @@
+event_inherited();
+
 switch(state)
 {
 	case PS.main:

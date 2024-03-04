@@ -157,9 +157,40 @@ function Die()
 
 function TakeDamage(_amount)
 {
-	hp -= _amount;
-	sprite_index = hurtSprite;
+	if(state != ES.dead)
+	{
+		hp -= _amount;
+		sprite_index = hurtSprite;
 	
-	if(hp <= 0)
-		Die();
+		if(hp <= 0)
+			Die();
+	}
+}
+
+function CheckBulletHit()
+{
+	if(state == ES.dead)
+		return;
+		
+	var _bullets = ds_list_create();
+	var _bulletsCount = instance_place_list(x, y, obj_bullet, _bullets, false);
+	
+	
+	if(_bulletsCount > 0)
+	{
+		for(var _i = 0; _i < _bulletsCount; _i ++)
+		{
+			//Check bullet target against isPlayer.
+			if(isPlayer) && (_bullets[|_i].bulletTarget == BT.player) ||
+			(!isPlayer) && (_bullets[|_i].bulletTarget == BT.enemy)
+			{
+				//Take damage.
+				TakeDamage(_bullets[|_i].damage);
+		
+				_bullets[|_i].Destroy();
+				
+				break;
+			}
+		}
+	}
 }

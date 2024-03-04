@@ -50,6 +50,7 @@
     {"id":{"name":"spr_gun","path":"sprites/spr_gun/spr_gun.yy",},},
     {"id":{"name":"obj_floor_tile","path":"objects/obj_floor_tile/obj_floor_tile.yy",},},
     {"id":{"name":"spr_enemy_bullet","path":"sprites/spr_enemy_bullet/spr_enemy_bullet.yy",},},
+    {"id":{"name":"spr_bullet_wall_collision","path":"sprites/spr_bullet_wall_collision/spr_bullet_wall_collision.yy",},},
     {"id":{"name":"spr_enemy_16","path":"sprites/spr_enemy_16/spr_enemy_16.yy",},},
     {"id":{"name":"spr_player_16","path":"sprites/spr_player_16/spr_player_16.yy",},},
     {"id":{"name":"spr_wall_tile_top","path":"sprites/spr_wall_tile_top/spr_wall_tile_top.yy",},},
@@ -62,6 +63,7 @@
     {"id":{"name":"obj_game_master","path":"objects/obj_game_master/obj_game_master.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
+    {"id":{"name":"spr_bullet_wall_collision27","path":"sprites/spr_bullet_wall_collision27/spr_bullet_wall_collision27.yy",},},
     {"id":{"name":"obj_level_generator","path":"objects/obj_level_generator/obj_level_generator.yy",},},
     {"id":{"name":"spr_player_walk","path":"sprites/spr_player_walk/spr_player_walk.yy",},},
     {"id":{"name":"spr_player_hurt_box","path":"sprites/spr_player_hurt_box/spr_player_hurt_box.yy",},},
@@ -81,6 +83,7 @@
     {"id":{"name":"spr_player_bullet","path":"sprites/spr_player_bullet/spr_player_bullet.yy",},},
     {"id":{"name":"Global","path":"scripts/Global/Global.yy",},},
     {"id":{"name":"rm_level_generator","path":"rooms/rm_level_generator/rm_level_generator.yy",},},
+    {"id":{"name":"spr_enemy_bullet_explode","path":"sprites/spr_enemy_bullet_explode/spr_enemy_bullet_explode.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "RoomOrderNodes": [

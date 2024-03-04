@@ -62,7 +62,7 @@ function CheckBulletHit()
 				//Take damage.
 				TakeDamage(_bullets[|_i].damage);
 		
-				instance_destroy(_bullets[|_i]);
+				_bullets[|_i].Destroy();
 				
 				break;
 			}

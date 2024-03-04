@@ -17,7 +17,7 @@ function DrawMiniMap()
 				var _y1 = _mapY + (_j * _tileDrawSize);
 				var _x2 = _x1 + _tileDrawSize * 0.5;
 				var _y2 = _y1 + _tileDrawSize * 0.5;
-				draw_set_color(c_gray);
+				draw_set_color(c_gray)
 				//draw_circle(_x + _i * 1, _y + _j * 1, 2, false);
 				draw_rectangle(_x1, _y1, _x2, _y2, false);
 			}

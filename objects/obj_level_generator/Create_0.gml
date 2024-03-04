@@ -266,7 +266,7 @@ function GenerateLevel()
 			if(grid[_i][_j] == TILE.wall)
 			{
 				var _wall = instance_create_depth(_i * tileSize, _j * tileSize, depth, obj_wall_tile);
-				if(grid[_i][_j + 1] == TILE.wall)
+				if(grid[_i][_j + 1] == TILE.wall) || (grid[_i][_j + 1] == TILE.empty)
 					_wall.sprite_index = spr_wall_tile_top;
 			}
 		}
