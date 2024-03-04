@@ -45,12 +45,15 @@ function UpdateSprite()
 
 function TakeDamage(_amount)
 {
-	sprite_index = hurtSprite;
+	if(state != PS.dead)
+	{
+		sprite_index = hurtSprite;
 	
-	hp -= _amount;
+		hp -= _amount;
 	
-	if(hp <= 0)
-		Die();
+		if(hp <= 0)
+			Die();
+	}
 }
 
 
@@ -58,6 +61,8 @@ function Die()
 {
 	ChangeState(PS.dead);
 	sprite_index = deadSprite;
+	
+	instance_create_depth(x, y, depth, obj_game_over);
 }
 
 function ChangeState(_state)
