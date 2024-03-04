@@ -1,3 +1,5 @@
+depth = -room_height * 100;
+
 function DrawMiniMap()
 {
 	draw_set_alpha(0.5);
